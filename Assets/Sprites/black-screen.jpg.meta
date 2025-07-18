@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: be09b43dceb634172af7df722addd74c
+guid: 13ba13a83e787457eb00029663af4927
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4623194553982470827
-    second: wp3597489-black-screen-wallpapers_0
+      213: 4834847638567473500
+    second: black-screen_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wp3597489-black-screen-wallpapers_0
+      name: black-screen_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: baa45adb3f2e82040800000000000000
-      internalID: 4623194553982470827
+      spriteID: c5153f7af44d81340800000000000000
+      internalID: 4834847638567473500
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wp3597489-black-screen-wallpapers_0: 4623194553982470827
+      black-screen_0: 4834847638567473500
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
