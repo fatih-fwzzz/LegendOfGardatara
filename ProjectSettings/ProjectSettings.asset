@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 2e277a1f24ab7446a819a96cd153f025
+  productGUID: c83ef66937f934a20bab7911cfb4b19c
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Legend of Gardatara
+  productName: LoG
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -604,7 +604,7 @@ PlayerSettings:
   ps4GarlicHeapSize: 2048
   ps4ProGarlicHeapSize: 2560
   playerPrefsMaxSize: 32768
-  ps4Passcode: 1fwkORBL8N7a1voNQNOQE6xlSc2N5j8i
+  ps4Passcode: 2PJFSG813uyEmldTA0HdUHTpZVr6zgCr
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -693,14 +693,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Legend of Gardatara
+  metroPackageName: LoG
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Legend of Gardatara
+  metroApplicationDescription: LoG
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -769,13 +769,13 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 3ebba2ec-0a94-4efb-83e2-5a09c3e57f78
+  cloudProjectId: 8ccd37a5-5a5c-42cc-a6c4-81d15cedb9a6
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Legend of Gardatara 2025-07-17_10-54-58
-  organizationId: fawwaz15
+  projectName: LoG
+  organizationId: t7r9z298jy
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
