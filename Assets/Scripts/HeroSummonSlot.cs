@@ -3,22 +3,21 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-
 public class HeroSummonSlot : MonoBehaviour
 {
     [Header("Hero Settings")]
     public GameObject heroPrefab;
-    public Transform spawnPoint;
+    public Transform[] spawnPoints; // ✅ Ganti dari single spawnPoint menjadi array
     public int summonCost = 50;
     public float cooldownTime = 5f; // lama cooldown
 
     [Header("UI Components")]
     public Image heroImage;
     public TextMeshProUGUI priceText;
-    public Slider cooldownSlider; //  Slider cooldown berjalan
+    public Slider cooldownSlider; // Slider cooldown berjalan
 
     [Header("Dependencies")]
-    public EnergyManager energyManager; //  drag manual via Inspector
+    public EnergyManager energyManager; // drag manual via Inspector
 
     private Button button;
     private bool isCooldown = false;
@@ -66,13 +65,17 @@ public class HeroSummonSlot : MonoBehaviour
         {
             Debug.Log($"[HeroSummonSlot] Hero summoned, energy used: {summonCost}");
 
-            if (heroPrefab != null && spawnPoint != null)
+            if (heroPrefab != null && spawnPoints != null && spawnPoints.Length > 0)
             {
+                // ✅ Pilih spawn point secara random
+                int randomIndex = Random.Range(0, spawnPoints.Length);
+                Transform spawnPoint = spawnPoints[randomIndex];
+
                 Instantiate(heroPrefab, spawnPoint.position, Quaternion.identity);
             }
             else
             {
-                Debug.LogError("[HeroSummonSlot] HeroPrefab atau SpawnPoint belum diassign!");
+                Debug.LogError("[HeroSummonSlot] HeroPrefab belum diassign atau SpawnPoints kosong!");
             }
 
             StartCoroutine(CooldownCoroutine());
@@ -109,7 +112,6 @@ public class HeroSummonSlot : MonoBehaviour
 
         isCooldown = false;
 
-        // cek energy setelah cooldown untuk enable button
         if (energyManager != null && energyManager.currentEnergy >= summonCost)
         {
             if (button != null) button.interactable = true;
