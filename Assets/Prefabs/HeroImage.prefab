@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7840217340634310597}
   - component: {fileID: -5444332604360689755}
   - component: {fileID: -799343385623014184}
-  - component: {fileID: 748150333726317762}
   m_Layer: 0
   m_Name: HeroImage
   m_TagString: Untagged
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3997628992787693335}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.91, y: -7.7, z: 0}
+  m_LocalPosition: {x: -41.9, y: 53.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,8 +77,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1448252480329919801, guid: bcb721bc4b64148df93c6c0aa4eb7f86, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 2088126466540161531, guid: 03cb9b21f2f8b481d93967a8739a09aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1428572, y: 1.3285714}
+    oldSize: {x: 1.015, y: 1.0125}
     newSize: {x: 1.1428572, y: 1.3285714}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -162,18 +161,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &748150333726317762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3997628992787693335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4917798753b9e49d686bc5ab29c3c5e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotRb: {fileID: -799343385623014184}
-  speed: 0
+  m_Constraints: 4

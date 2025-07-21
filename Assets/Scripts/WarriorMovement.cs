@@ -3,7 +3,7 @@ using UnityEngine;
 public class WarriorMovement : MonoBehaviour
 
 {
-    public Rigidbody2D robotRb;
+    public Rigidbody2D heroRb;
     public float speed;
 
  
@@ -11,6 +11,6 @@ public class WarriorMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        robotRb.linearVelocity = Vector2.right * speed;
+        heroRb.linearVelocity = Vector2.right * speed;
     }
 }
