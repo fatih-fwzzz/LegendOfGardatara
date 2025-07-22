@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroState: 0
-  detectionRange: 0.9
+  detectionRange: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -263,8 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 0.5
-  attackCooldown: 0.1
-  damage: 50
+  attackCooldown: 1
+  damage: 25
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256

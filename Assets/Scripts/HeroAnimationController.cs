@@ -20,9 +20,9 @@ public class HeroAnimationController : MonoBehaviour
     /// <summary>
     /// Trigger animasi menyerang.
     /// </summary>
-    public void SetAttack()
+    public void SetAttack(bool isAttack)
     {
-        animator.SetTrigger("isAttacking");
+        animator.SetBool("isAttacking", isAttack);
     }
 
     /// <summary>
@@ -40,5 +40,4 @@ public class HeroAnimationController : MonoBehaviour
     {
         animator.SetTrigger("isDefeated");
     }
-    
 }

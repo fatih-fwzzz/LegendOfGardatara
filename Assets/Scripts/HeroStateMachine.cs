@@ -39,7 +39,12 @@ public class HeroStateMachine : MonoBehaviour
         {
             case HeroState.Walk:
                 heroAnimationController.SetWalk(true);
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, detectionRange, enemyLayer);
+                RaycastHit2D hit = Physics2D.Raycast(
+                    transform.position,
+                    Vector2.right,
+                    detectionRange,
+                    enemyLayer
+                );
                 if (hit.collider != null)
                 {
                     SetState(HeroState.Attack);
@@ -50,7 +55,8 @@ public class HeroStateMachine : MonoBehaviour
                 heroAnimationController.SetWalk(false);
                 if (!attackTriggered)
                 {
-                    heroAnimationController.SetAttack();
+                    Debug.Log("Attack not triggered!");
+                    // heroAnimationController.SetAttack(true);
                     attackTriggered = true;
                     Invoke(nameof(ResumeAfterAttack), 0.5f);
                 }
@@ -108,13 +114,19 @@ public class HeroStateMachine : MonoBehaviour
     {
         if (heroState != HeroState.Defeated)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, detectionRange, enemyLayer);
+            RaycastHit2D hit = Physics2D.Raycast(
+                transform.position,
+                Vector2.right,
+                detectionRange,
+                enemyLayer
+            );
             if (hit.collider != null)
             {
                 SetState(HeroState.Attack);
             }
             else
             {
+                heroAnimationController.SetAttack(false);
                 SetState(HeroState.Walk);
             }
         }
@@ -138,5 +150,5 @@ public enum HeroState
     Walk,
     Attack,
     Hit,
-    Defeated
+    Defeated,
 }

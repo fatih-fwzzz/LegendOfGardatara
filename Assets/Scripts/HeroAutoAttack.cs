@@ -43,13 +43,14 @@ public class HeroAutoAttack : MonoBehaviour
         }
         else
         {
+            heroAnimationController.SetAttack(false);
             heroAnimationController.SetWalk(true);
         }
     }
 
     private void Attack(GameObject enemyObject)
     {
-        heroAnimationController.SetAttack();
+        heroAnimationController.SetAttack(true);
 
         EnemyHealth enemyHealth = enemyObject.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
@@ -60,7 +61,7 @@ public class HeroAutoAttack : MonoBehaviour
 
     private void AttackTower(GameObject towerObject)
     {
-        heroAnimationController.SetAttack();
+        heroAnimationController.SetAttack(true);
 
         EnemyTowerHealth enemyTowerHealth = towerObject.GetComponent<EnemyTowerHealth>();
         if (enemyTowerHealth != null)

@@ -21,7 +21,8 @@ public class CannonProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (hasCollided) return;
+        if (hasCollided)
+            return;
 
         string collidedObjectName = collision.gameObject.name;
         Debug.Log($" Cannon collided with: {collidedObjectName}");
@@ -70,4 +71,3 @@ public class CannonProjectile : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
