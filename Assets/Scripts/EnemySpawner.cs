@@ -9,27 +9,39 @@ public class EnemySpawner : MonoBehaviour
     public float initialDelay = 3f; // 3 detik setelah game mulai
     public float waveInterval = 15f; // interval antar wave
 
+    [Header("Dependencies")]
+    public EnemyTowerHealth enemyTowerHealth; // drag EnemyTowerHealth dari scene ke sini
+
     private void Start()
     {
+        if (enemyTowerHealth == null)
+        {
+            enemyTowerHealth = FindObjectOfType<EnemyTowerHealth>();
+        }
+
         StartCoroutine(SpawnWaveSequence());
     }
 
     IEnumerator SpawnWaveSequence()
     {
-        // Wave 1: 1 enemy, spawn langsung setelah initialDelay
         yield return new WaitForSeconds(initialDelay);
+        if (IsTowerDestroyed()) yield break;
+
         SpawnEnemy();
 
-        // Wave 2: 2 enemy, dalam 15 detik setelah wave 1
         yield return new WaitForSeconds(waveInterval);
+        if (IsTowerDestroyed()) yield break;
+
         yield return StartCoroutine(SpawnWave(2, waveInterval));
 
-        // Wave 3: 3 enemy, dalam 15 detik setelah wave 2
         yield return new WaitForSeconds(waveInterval);
+        if (IsTowerDestroyed()) yield break;
+
         yield return StartCoroutine(SpawnWave(3, waveInterval));
 
-        // Wave 4: 4 enemy, dalam 15 detik setelah wave 3
         yield return new WaitForSeconds(waveInterval);
+        if (IsTowerDestroyed()) yield break;
+
         yield return StartCoroutine(SpawnWave(4, waveInterval));
 
         Debug.Log("✅ Semua wave spawn selesai.");
@@ -41,6 +53,8 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < enemyCount; i++)
         {
+            if (IsTowerDestroyed()) yield break;
+
             SpawnEnemy();
             yield return new WaitForSeconds(interval);
         }
@@ -57,5 +71,15 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogWarning("[EnemySpawner] EnemyPrefab atau SpawnPoints belum diatur!");
         }
+    }
+
+    bool IsTowerDestroyed()
+    {
+        if (enemyTowerHealth != null && enemyTowerHealth.currentHealth <= 0)
+        {
+            Debug.Log("⛔ Enemy tower destroyed. Stop spawning waves.");
+            return true;
+        }
+        return false;
     }
 }

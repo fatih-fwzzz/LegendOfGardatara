@@ -167,4 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 50
-  explosionEffectPrefab: {fileID: 0}
+  explosionEffectPrefab: {fileID: 6569312756763072270}

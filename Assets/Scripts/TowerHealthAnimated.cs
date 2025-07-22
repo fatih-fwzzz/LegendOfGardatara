@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class EnemyTowerHealth : MonoBehaviour
+public class TowerHealthAnimated : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int maxHealth = 50;
+    public int maxHealth = 100;
     public int currentHealth;
 
     [Header("Sprite Settings")]
@@ -16,19 +17,20 @@ public class EnemyTowerHealth : MonoBehaviour
     public Slider healthSlider;
 
     [Header("Effects")]
-    public CameraShake cameraShake;         // Drag CameraShake ke sini
-    public GameObject fireEffectPrefab;     // Prefab api/asap jika ingin
-    private GameObject fireEffectInstance;
+    public CameraShake cameraShake;         // Drag CameraShake
+    public GameObject fireEffectPrefab;     // Prefab api/asap
+    private GameObject fireEffectInstance;  // Instance api/asap aktif
 
     [Header("Flash Settings")]
-    public Color flashColor = Color.white;  // Warna flash bisa diatur Inspector
-    public float flashDuration = 0.1f;      // Durasi flash
+    public Color flashColor = Color.white;  // ✅ Warna flash yang dapat dipilih di Inspector
+    public float flashDuration = 0.1f;      // durasi flash
     private Color originalColor;
     private Coroutine flashCoroutine;
 
-    private bool isDestroyed = false;
+    [Header("Defeat Scene Settings")]
+    public string defeatSceneName = "DefeatScene"; // Ganti nama sesuai scene defeat Anda
 
-    void Start()
+    private void Start()
     {
         currentHealth = maxHealth;
 
@@ -39,19 +41,21 @@ public class EnemyTowerHealth : MonoBehaviour
         }
 
         if (towerSr != null)
+        {
             originalColor = towerSr.color;
+        }
 
         UpdateTowerSprite();
     }
 
-    void UpdateTowerSprite()
+    private void UpdateTowerSprite()
     {
         if (towerSprites.Length == 0 || towerSr == null)
             return;
 
         if (currentHealth <= 0)
         {
-            towerSr.sprite = towerSprites[0]; // Saat hancur tampilkan sprite element 0
+            towerSr.sprite = towerSprites[0]; // Saat hancur tampilkan sprite element 0 sesuai permintaan
         }
         else
         {
@@ -61,28 +65,30 @@ public class EnemyTowerHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int damageAmount)
     {
-        if (isDestroyed) return; // Abaikan jika sudah hancur
-
-        currentHealth -= amount;
+        currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         if (healthSlider != null)
+        {
             healthSlider.value = currentHealth;
+        }
 
         UpdateTowerSprite();
 
-        // ✅ Efek shake
+        // ✅ Efek shake kamera saat kena hit
         if (cameraShake != null)
+        {
             cameraShake.Shake(0.15f, 0.15f);
+        }
 
-        // ✅ Flash warna saat kena hit
+        // ✅ Flash warna custom saat kena hit
         if (flashCoroutine != null)
             StopCoroutine(flashCoroutine);
         flashCoroutine = StartCoroutine(FlashEffect());
 
-        // ✅ Tampilkan api/asap jika health < 30%
+        // ✅ Tampilkan api/asap saat health < 30%
         if (currentHealth < maxHealth * 0.3f)
         {
             if (fireEffectInstance == null && fireEffectPrefab != null)
@@ -91,12 +97,10 @@ public class EnemyTowerHealth : MonoBehaviour
             }
         }
 
-        // ✅ Set isDestroyed tanpa Destroy tower
+        // ✅ Trigger defeat scene saat health = 0
         if (currentHealth <= 0)
         {
-            isDestroyed = true;
-            Debug.Log("[EnemyTowerHealth] Tower musuh hancur.");
-            // Tambahkan logic reward/menang jika tower musuh hancur
+            Invoke(nameof(TriggerDefeatScene), 2f); // delay agar terlihat
         }
     }
 
@@ -107,6 +111,18 @@ public class EnemyTowerHealth : MonoBehaviour
             towerSr.color = flashColor;
             yield return new WaitForSeconds(flashDuration);
             towerSr.color = originalColor;
+        }
+    }
+
+    private void TriggerDefeatScene()
+    {
+        if (!string.IsNullOrEmpty(defeatSceneName))
+        {
+            SceneManager.LoadScene(defeatSceneName);
+        }
+        else
+        {
+            Debug.LogWarning("[TowerHealthAnimated] Defeat scene name belum diisi di inspector.");
         }
     }
 }
