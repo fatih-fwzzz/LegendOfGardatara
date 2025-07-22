@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 03cb9b21f2f8b481d93967a8739a09aa
+guid: ce660bf7f866d4cae9b64f916559022f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2088126466540161531
-    second: Bawangmeraputi_0
-  - first:
-      213: -7292016434386167510
-    second: Bawangmeraputi_1
+      213: -2750724848938197925
+    second: tilesbaru_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -77,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bawangmeraputi_0
+      name: tilesbaru_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 201
-        width: 406
-        height: 405
+        x: 15
+        y: 383
+        width: 994
+        height: 272
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf9c73c35f38afc10800000000000000
-      internalID: 2088126466540161531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bawangmeraputi_1
-      rect:
-        serializedVersion: 2
-        x: 393
-        y: 194
-        width: 406
-        height: 405
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a291a1c00bd8dca90800000000000000
-      internalID: -7292016434386167510
+      spriteID: b5cd238e25673d9d0800000000000000
+      internalID: -2750724848938197925
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bawangmeraputi_0: 2088126466540161531
-      Bawangmeraputi_1: -7292016434386167510
+      tilesbaru_0: -2750724848938197925
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

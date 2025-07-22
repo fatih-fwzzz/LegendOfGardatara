@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!hasWon && enemyTowerHealth.health <= 0)
+        if (!hasWon && enemyTowerHealth.currentHealth
+ <= 0)
         {
             WinCondition();
         }

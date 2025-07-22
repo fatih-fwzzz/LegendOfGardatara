@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82215ca909604690be26d1ae4cdd4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   knockbackForce: 5
   knockbackDelay: 0.15
   robotMovement: {fileID: 5972559588406756092}

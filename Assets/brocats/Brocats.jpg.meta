@@ -1,37 +1,10 @@
 fileFormatVersion: 2
-guid: 8769be9d71dda45aa8e51e9fa7569586
+guid: 469fd0a39f9154a71aebdcf59e8ef853
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8191500774976704279
-    second: ufo-destory_0
-  - first:
-      213: 8267583052131226301
-    second: ufo-destory_1
-  - first:
-      213: -952526088220270342
-    second: ufo-destory_2
-  - first:
-      213: -4148118534893152499
-    second: ufo-destory_3
-  - first:
-      213: -7535601413248285974
-    second: ufo-destory_4
-  - first:
-      213: 7670774490791460497
-    second: ufo-destory_5
-  - first:
-      213: 1540215446643515736
-    second: ufo-destory_6
-  - first:
-      213: 7624597131511175429
-    second: ufo-destory_7
-  - first:
-      213: 3523123763611853348
-    second: ufo-destory_8
-  - first:
-      213: 1575795093471415783
-    second: ufo-destory_9
+      213: -4924571849016341606
+    second: Brocats_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -140,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ufo-destory_0
+      name: Brocats_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1366
-        height: 1218
+        width: 1559
+        height: 1038
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9e03d221271f15e80800000000000000
-      internalID: -8191500774976704279
+      spriteID: a9b0e7caef768abb0800000000000000
+      internalID: -4924571849016341606
       vertices: []
       indices: 
       edges: []
@@ -165,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e9b2ddfb4bb894a33a0da6dad31415fb
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,11 +146,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1366.0,"y":1218.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      ufo-destory_0: -8191500774976704279
+      Brocats_0: -4924571849016341606
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

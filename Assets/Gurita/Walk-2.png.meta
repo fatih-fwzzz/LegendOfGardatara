@@ -1,37 +1,19 @@
 fileFormatVersion: 2
-guid: 8769be9d71dda45aa8e51e9fa7569586
+guid: 7c4c1bb36837748fb9cbdd072f8ad173
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8191500774976704279
-    second: ufo-destory_0
+      213: 5958833304615500348
+    second: Walk-2_0
   - first:
-      213: 8267583052131226301
-    second: ufo-destory_1
+      213: -6771922083897952655
+    second: Walk-2_1
   - first:
-      213: -952526088220270342
-    second: ufo-destory_2
+      213: -201913468150994977
+    second: Walk-2_2
   - first:
-      213: -4148118534893152499
-    second: ufo-destory_3
-  - first:
-      213: -7535601413248285974
-    second: ufo-destory_4
-  - first:
-      213: 7670774490791460497
-    second: ufo-destory_5
-  - first:
-      213: 1540215446643515736
-    second: ufo-destory_6
-  - first:
-      213: 7624597131511175429
-    second: ufo-destory_7
-  - first:
-      213: 3523123763611853348
-    second: ufo-destory_8
-  - first:
-      213: 1575795093471415783
-    second: ufo-destory_9
+      213: -7731082190306705900
+    second: Walk-2_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -140,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ufo-destory_0
+      name: Walk-2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1366
-        height: 1218
+        x: 49
+        y: 33
+        width: 97
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9e03d221271f15e80800000000000000
-      internalID: -8191500774976704279
+      spriteID: c3abf5db15702b250800000000000000
+      internalID: 5958833304615500348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk-2_1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 26
+        width: 122
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 176b3ae6ebc4502a0800000000000000
+      internalID: -6771922083897952655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk-2_2
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 19
+        width: 109
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd72e7f35c8a23df0800000000000000
+      internalID: -201913468150994977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk-2_3
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 48
+        width: 117
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41e7b6d75bda5b490800000000000000
+      internalID: -7731082190306705900
       vertices: []
       indices: 
       edges: []
@@ -165,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e9b2ddfb4bb894a33a0da6dad31415fb
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,11 +221,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1366.0,"y":1218.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      ufo-destory_0: -8191500774976704279
+      Walk-2_0: 5958833304615500348
+      Walk-2_1: -6771922083897952655
+      Walk-2_2: -201913468150994977
+      Walk-2_3: -7731082190306705900
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
