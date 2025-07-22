@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 537178942457327145}
   - component: {fileID: 5662612230684843065}
   - component: {fileID: 5375943111104257242}
-  - component: {fileID: 2041681903180896169}
   m_Layer: 0
   m_Name: HeroImage 1
   m_TagString: Untagged
@@ -151,7 +150,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.82, y: 0.91}
+    oldSize: {x: 1.025, y: 1.1375}
     newSize: {x: 0.625, y: 0.675}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -186,17 +185,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2041681903180896169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6125875887726499935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4917798753b9e49d686bc5ab29c3c5e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotRb: {fileID: 5375943111104257242}
-  speed: 1

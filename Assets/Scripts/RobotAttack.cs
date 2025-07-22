@@ -6,10 +6,12 @@ public class RobotAttack : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<TowerHealth>())
+        TowerHealthAnimated towerHealthAnimated = collision.gameObject.GetComponent<TowerHealthAnimated>();
+
+        if (towerHealthAnimated != null)
         {
-            collision.gameObject.GetComponent<TowerHealth>().health -= damage;
-            Destroy(gameObject);
+            towerHealthAnimated.TakeDamage(damage);
+            Destroy(gameObject); // hancurkan projectile robot setelah serangan
         }
     }
 }
