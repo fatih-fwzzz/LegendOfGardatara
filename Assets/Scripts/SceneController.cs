@@ -1,44 +1,104 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     public GameObject[] scenes;
     public GameObject continueText;
-    private int currSceneidx = 1;
+    private int currSceneidx = 0;
+    public float fadeDuration = 1f;
+    public float slideDuration = 1f; // waktu slide sebelum next
 
-    void Start()
+    private bool readyToContinue = false;
+
+    private void Start()
     {
-        Debug.Log($"Scene Count: {scenes.Length}");
-
         continueText.SetActive(false);
-        scenes[0].SetActive(true);
-        for (int i = 1; i < scenes.Length; i++)
-            scenes[i].SetActive(i == 0);
+        foreach (GameObject scene in scenes)
+            scene.SetActive(false);
+
+        StartCoroutine(PlaySlides());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator PlaySlides()
     {
-        if (Input.anyKeyDown)
+        while (currSceneidx < scenes.Length)
         {
-            if (currSceneidx < scenes.Length)
-            {
-                Debug.Log($"Tapped! Activating Scene: {currSceneidx + 1}");
-                scenes[currSceneidx].SetActive(true);
+            GameObject currentSlide = scenes[currSceneidx];
+            currentSlide.SetActive(true);
 
-                currSceneidx++;
-                if (currSceneidx == scenes.Length)
-                {
-                    continueText.SetActive(true);
-                }
-            }
-            else
+            SpriteRenderer sr = currentSlide.GetComponent<SpriteRenderer>();
+            if (sr != null)
             {
-                SceneManager.LoadSceneAsync(2);
+                Color c = sr.color;
+                c.a = 0f;
+                sr.color = c;
+
+                float timer = 0f;
+                while (timer < fadeDuration)
+                {
+                    timer += Time.deltaTime;
+                    c.a = Mathf.Clamp01(timer / fadeDuration);
+                    sr.color = c;
+                    yield return null;
+                }
+                c.a = 1f;
+                sr.color = c;
             }
+
+            yield return new WaitForSeconds(slideDuration);
+
+            currSceneidx++;
+        }
+
+        continueText.SetActive(true);
+        readyToContinue = true;
+
+        StartCoroutine(BlinkContinueText());
+    }
+
+    private IEnumerator BlinkContinueText()
+    {
+        CanvasGroup cg = continueText.GetComponent<CanvasGroup>();
+        if (cg == null)
+        {
+            cg = continueText.AddComponent<CanvasGroup>();
+        }
+
+        while (true)
+        {
+            // Fade In
+            float timer = 0f;
+            while (timer < 0.5f)
+            {
+                timer += Time.deltaTime;
+                cg.alpha = Mathf.Lerp(0f, 1f, timer / 0.5f);
+                yield return null;
+            }
+            cg.alpha = 1f;
+
+            yield return new WaitForSeconds(0.3f);
+
+            // Fade Out
+            timer = 0f;
+            while (timer < 0.5f)
+            {
+                timer += Time.deltaTime;
+                cg.alpha = Mathf.Lerp(1f, 0f, timer / 0.5f);
+                yield return null;
+            }
+            cg.alpha = 0f;
+
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
+    private void Update()
+    {
+        if (readyToContinue && Input.anyKeyDown)
+        {
+            SceneManager.LoadSceneAsync(2); // pindah scene saat user tap
         }
     }
 }

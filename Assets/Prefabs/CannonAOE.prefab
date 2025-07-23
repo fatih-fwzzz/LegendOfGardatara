@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2917000182891882972, guid: 362566329845a4832976162b231db4c1, type: 3}
+  m_Sprite: {fileID: 6688776906506157095, guid: 769b8caa170244e329c4b8140469a69b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,7 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 50
-  radius: 3
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  explosionEffectPrefab: {fileID: 0}
