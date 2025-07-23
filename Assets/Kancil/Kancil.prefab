@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroRb: {fileID: 7505260523270773668}
-  speed: 1
+  speed: 1.5
 --- !u!61 &5119065963626457196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 20
   heroSprites: []
   heroSr: {fileID: 0}
 --- !u!114 &-6730589493453217024
@@ -249,7 +249,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  moveSpeed: 2
+  moveSpeed: 0.5
+  damage: 10
+  knockbackForce: 5
 --- !u!114 &3932146915093473476
 MonoBehaviour:
   m_ObjectHideFlags: 0

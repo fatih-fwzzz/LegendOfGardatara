@@ -30,7 +30,7 @@ public class HeroAnimationController : MonoBehaviour
     /// </summary>
     public void TriggerHit()
     {
-        animator.SetTrigger("isHit");
+        animator.SetTrigger("Hit");
     }
 
     /// <summary>
@@ -38,6 +38,7 @@ public class HeroAnimationController : MonoBehaviour
     /// </summary>
     public void SetDefeated()
     {
-        animator.SetTrigger("isDefeated");
+        Debug.Log("Play Kancil Dead animation");
+        animator.SetTrigger("Defeated");
     }
 }

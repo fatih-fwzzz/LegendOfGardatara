@@ -2353,7 +2353,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 52.9152
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -3578,7 +3578,7 @@ Transform:
   m_GameObject: {fileID: 1085763036}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.85, y: -1.1, z: 0}
+  m_LocalPosition: {x: -7.85, y: -0.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3707,7 +3707,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.3896212, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3717,7 +3717,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.32, y: 3.7}
+  m_Size: {x: 1.5407573, y: 3.7}
   m_EdgeRadius: 0
 --- !u!114 &1100187886
 MonoBehaviour:
@@ -3865,7 +3865,7 @@ GameObject:
   - component: {fileID: 1381169683}
   m_Layer: 9
   m_Name: TowerEnemy
-  m_TagString: Enemy
+  m_TagString: TowerEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4503,7 +4503,7 @@ Transform:
   m_GameObject: {fileID: 1532921684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.89, y: -1.3000001, z: 0}
+  m_LocalPosition: {x: -6.89, y: -0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6115,6 +6115,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   moveSpeed: 2
+  damage: 10
+  knockbackForce: 5
 --- !u!50 &1954170714
 Rigidbody2D:
   serializedVersion: 5

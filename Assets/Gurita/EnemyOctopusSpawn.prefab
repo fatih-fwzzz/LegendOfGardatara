@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 7018685237357137414}
   - component: {fileID: 3228005650154719492}
   - component: {fileID: 7266638164673669386}
+  - component: {fileID: -3132229712929375800}
+  - component: {fileID: -4932771767919051026}
+  - component: {fileID: 3031283289753273215}
   m_Layer: 8
   m_Name: EnemyOctopusSpawn
   m_TagString: Enemy
@@ -232,3 +235,56 @@ MonoBehaviour:
   knockbackDelay: 0.15
   robotMovement: {fileID: 7018685237357137414}
   rb: {fileID: 4260331328680995221}
+--- !u!114 &-3132229712929375800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667851162377095519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889ae77fd0b2848a4bfc5d46320ba265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyState: 0
+  detectionRange: 0.9
+  heroLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  moveSpeed: 0.5
+  damage: 25
+  knockbackForce: 5
+--- !u!114 &-4932771767919051026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667851162377095519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bfefea9b36e4a8aa6a2b7a2d6af830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3031283289753273215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667851162377095519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d47af1153184531a030711b0234837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 0.5
+  attackCooldown: 1
+  damage: 25
+  heroLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  towerLayer:
+    serializedVersion: 2
+    m_Bits: 512
