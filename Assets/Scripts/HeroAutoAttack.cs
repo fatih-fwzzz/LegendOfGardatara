@@ -49,6 +49,7 @@ public class HeroAutoAttack : MonoBehaviour
 
     private void Attack(GameObject enemyObject)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.hitSFX);
         heroAnimationController.SetAttack();
 
         EnemyHealth enemyHealth = enemyObject.GetComponent<EnemyHealth>();
@@ -61,6 +62,7 @@ public class HeroAutoAttack : MonoBehaviour
     private void AttackTower(GameObject towerObject)
     {
         heroAnimationController.SetAttack();
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.hitSFX);
 
         EnemyTowerHealth enemyTowerHealth = towerObject.GetComponent<EnemyTowerHealth>();
         if (enemyTowerHealth != null)

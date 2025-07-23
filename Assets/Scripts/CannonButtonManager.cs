@@ -37,6 +37,7 @@ public class CannonButtonManager : MonoBehaviour
  
     public void ActivateCannon()
     {
+         AudioManager.Instance.PlaySFX(AudioManager.Instance.shootCannonSFX);
         if (!isCooldown)
         {
             Debug.Log("Cannon Button pressed, spawning cannon...");

@@ -218,8 +218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
-  heroSprites: []
-  heroSr: {fileID: 0}
+  heroSprites:
+  - {fileID: 1477998768, guid: 0841dd2a728994921ac87f681bf145ed, type: 3}
+  heroSr: {fileID: 5179921846322227902}
 --- !u!114 &-6730589493453217024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,8 +264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 0.5
-  attackCooldown: 0.1
-  damage: 50
+  attackCooldown: 0.8
+  damage: 25
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256

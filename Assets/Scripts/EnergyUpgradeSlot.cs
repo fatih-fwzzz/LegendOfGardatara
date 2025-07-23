@@ -31,6 +31,7 @@ public class EnergyUpgradeSlot : MonoBehaviour
 
     public void TryUpgradeEnergy()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.upgradeSFX);
         Debug.Log($"[UpgradeSlot] Trying upgrade. CurrentEnergy: {energyManager.currentEnergy}, Cost: {upgradeCost}");
 
         if (energyManager.TryUseEnergy(upgradeCost))
