@@ -7,7 +7,7 @@ public class HeroSummonSlot : MonoBehaviour
 {
     [Header("Hero Settings")]
     public GameObject heroPrefab;
-    public Transform[] spawnPoints; // ✅ Ganti dari single spawnPoint menjadi array
+    public Transform[] spawnPoints; // array spawnpoint
     public int summonCost = 50;
     public float cooldownTime = 5f; // lama cooldown
 
@@ -24,12 +24,14 @@ public class HeroSummonSlot : MonoBehaviour
 
     void Start()
     {
+        
         if (energyManager == null)
             Debug.LogError("[HeroSummonSlot] EnergyManager belum diassign di Inspector!");
 
         button = GetComponent<Button>() ?? GetComponentInChildren<Button>();
         if (button != null)
             button.onClick.AddListener(TrySummonHero);
+            
         else
             Debug.LogError("[HeroSummonSlot] Button tidak ditemukan!");
 
@@ -67,11 +69,13 @@ public class HeroSummonSlot : MonoBehaviour
 
             if (heroPrefab != null && spawnPoints != null && spawnPoints.Length > 0)
             {
-                // ✅ Pilih spawn point secara random
+                // Pilih spawn point secara random
                 int randomIndex = Random.Range(0, spawnPoints.Length);
                 Transform spawnPoint = spawnPoints[randomIndex];
 
                 Instantiate(heroPrefab, spawnPoint.position, Quaternion.identity);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.deploySFX);
+
             }
             else
             {
