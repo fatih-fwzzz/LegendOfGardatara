@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -16,9 +16,20 @@ public class EnemyHealth : MonoBehaviour
     public RobotMovement robotMovement;
     public Rigidbody2D rb; // tambahkan jika ingin knockback fisik
 
+    private EnemyStateMachine stateMachine;
+    private bool isDefeated = false;
+
     private void Start()
     {
         currentHealth = maxHealth;
+        stateMachine = GetComponent<EnemyStateMachine>();
+
+        if (stateMachine == null)
+        {
+            Debug.LogError(
+                "CRITICAL ERROR: EnemyStateMachine component not found on " + gameObject.name + "!"
+            );
+        }
 
         if (robotMovement == null)
             robotMovement = GetComponent<RobotMovement>();
@@ -40,9 +51,19 @@ public class EnemyHealth : MonoBehaviour
     /// </summary>
     public void TakeDamage(float damage)
     {
+        if (isDefeated)
+            return;
         currentHealth -= Mathf.RoundToInt(damage);
 
-        if (!isKnockedBack)
+        // --- ADD THIS CHECK ---
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Health is zero or less. Calling Die().");
+            Die();
+        }
+        // ----------------------
+
+        else if (!isKnockedBack)
         {
             StartCoroutine(KnockbackDelay());
         }
@@ -128,6 +149,19 @@ public class EnemyHealth : MonoBehaviour
     /// </summary>
     private void Die()
     {
-        Destroy(gameObject);
+        if (isDefeated)
+            return; // Prevent this from being called multiple times
+        isDefeated = true;
+
+        // Tell the state machine to handle the defeat sequence (animation, etc.)
+        if (stateMachine != null)
+        {
+            stateMachine.OnDefeated();
+        }
+        else
+        {
+            // Fallback if no state machine is found
+            Destroy(gameObject);
+        }
     }
 }

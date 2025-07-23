@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - TowerPlayer
   - Hero
+  - TowerEnemy
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Enemy
   - Tower
   - Hero
-  - 
+  - Dead
   - 
   - 
   - 

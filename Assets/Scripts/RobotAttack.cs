@@ -13,7 +13,7 @@ public class RobotAttack : MonoBehaviour
         if (towerHealthAnimated != null)
         {
             towerHealthAnimated.TakeDamage(damage);
-            Destroy(gameObject); // hancurkan projectile robot setelah serangan
+            // Destroy(gameObject); // hancurkan projectile robot setelah serangan
         }
     }
 }

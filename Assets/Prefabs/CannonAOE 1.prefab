@@ -167,4 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 50
+  searchRadius: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
   explosionEffectPrefab: {fileID: 6569312756763072270}

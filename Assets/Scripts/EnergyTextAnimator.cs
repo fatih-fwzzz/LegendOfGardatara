@@ -1,6 +1,6 @@
-using UnityEngine;
-using TMPro;
 using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class EnergyTextAnimator : MonoBehaviour
@@ -90,4 +90,3 @@ public class EnergyTextAnimator : MonoBehaviour
             glowImage.color = originalGlowImageColor;
     }
 }
-

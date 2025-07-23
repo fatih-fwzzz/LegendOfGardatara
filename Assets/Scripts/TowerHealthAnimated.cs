@@ -1,7 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TowerHealthAnimated : MonoBehaviour
 {
@@ -17,13 +17,13 @@ public class TowerHealthAnimated : MonoBehaviour
     public Slider healthSlider;
 
     [Header("Effects")]
-    public CameraShake cameraShake;         // Drag CameraShake
-    public GameObject fireEffectPrefab;     // Prefab api/asap
-    private GameObject fireEffectInstance;  // Instance api/asap aktif
+    public CameraShake cameraShake; // Drag CameraShake
+    public GameObject fireEffectPrefab; // Prefab api/asap
+    private GameObject fireEffectInstance; // Instance api/asap aktif
 
     [Header("Flash Settings")]
-    public Color flashColor = Color.white;  // ✅ Warna flash yang dapat dipilih di Inspector
-    public float flashDuration = 0.1f;      // durasi flash
+    public Color flashColor = Color.white; // ✅ Warna flash yang dapat dipilih di Inspector
+    public float flashDuration = 0.1f; // durasi flash
     private Color originalColor;
     private Coroutine flashCoroutine;
 
@@ -60,7 +60,11 @@ public class TowerHealthAnimated : MonoBehaviour
         else
         {
             float healthPercent = (float)currentHealth / maxHealth;
-            int spriteIndex = Mathf.Clamp(Mathf.FloorToInt(healthPercent * towerSprites.Length), 0, towerSprites.Length - 1);
+            int spriteIndex = Mathf.Clamp(
+                Mathf.FloorToInt(healthPercent * towerSprites.Length),
+                0,
+                towerSprites.Length - 1
+            );
             towerSr.sprite = towerSprites[spriteIndex];
         }
     }
@@ -93,7 +97,12 @@ public class TowerHealthAnimated : MonoBehaviour
         {
             if (fireEffectInstance == null && fireEffectPrefab != null)
             {
-                fireEffectInstance = Instantiate(fireEffectPrefab, transform.position, Quaternion.identity, transform);
+                fireEffectInstance = Instantiate(
+                    fireEffectPrefab,
+                    transform.position,
+                    Quaternion.identity,
+                    transform
+                );
             }
         }
 

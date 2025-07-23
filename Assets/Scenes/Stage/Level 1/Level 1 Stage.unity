@@ -453,7 +453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -833, y: 338}
+  m_AnchoredPosition: {x: -988, y: 338}
   m_SizeDelta: {x: 58.5241, y: 20.2283}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220556560
@@ -2369,7 +2369,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 52.9152
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -2395,7 +2395,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3460001, y: -0.6199999, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3837,17 +3837,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.3896212, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.0275, y: 3.005}
+    oldSize: {x: 2.691111, y: 2.671111}
     newSize: {x: 1.16, y: 1.85}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.32, y: 3.7}
+  m_Size: {x: 1.5407573, y: 3.7}
   m_EdgeRadius: 0
 --- !u!114 &1100187886
 MonoBehaviour:
@@ -3868,7 +3868,6 @@ MonoBehaviour:
   - {fileID: -8524221247853475768, guid: 144082a8cd9244b97994abd8f148c465, type: 3}
   - {fileID: 4452349434763984812, guid: 86a99b4f799c94de18196f571988699a, type: 3}
   - {fileID: -493137259908360684, guid: 1c448b2a00ff849e4ae4af2361024c1d, type: 3}
-  - {fileID: -8524221247853475768, guid: 144082a8cd9244b97994abd8f148c465, type: 3}
   healthSlider: {fileID: 220556560}
   cameraShake: {fileID: 519420033}
   fireEffectPrefab: {fileID: 0}
@@ -3987,7 +3986,7 @@ Transform:
   m_GameObject: {fileID: 1284058508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.5, y: -0.99, z: 0}
+  m_LocalPosition: {x: 7.71, y: -0.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4082,7 +4081,7 @@ GameObject:
   - component: {fileID: 1381169683}
   m_Layer: 9
   m_Name: TowerEnemy
-  m_TagString: Enemy
+  m_TagString: TowerEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4151,7 +4150,7 @@ Transform:
   m_GameObject: {fileID: 1381169679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.5, y: -0.6, z: 0}
+  m_LocalPosition: {x: 8.25, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4195,7 +4194,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.176, y: 2.664}
+    oldSize: {x: 3.48, y: 2.22}
     newSize: {x: 1.16, y: 1.85}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4311,8 +4310,8 @@ Transform:
   m_GameObject: {fileID: 1406598859}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 0.1501, z: 0}
+  m_LocalScale: {x: 0.8955472, y: 0.9218541, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -7381,7 +7380,7 @@ Transform:
   m_GameObject: {fileID: 2083544932}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.43, y: -1.28, z: 0}
+  m_LocalPosition: {x: 6.6400003, y: -0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
