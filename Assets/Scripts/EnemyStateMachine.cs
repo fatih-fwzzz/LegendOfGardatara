@@ -4,7 +4,7 @@ public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyState enemyState = EnemyState.Idle;
     public float detectionRange = 6f;
-    public LayerMask heroLayer;
+    public LayerMask targetLayers;
     public float moveSpeed = 2f;
 
     public float damage = 10f;
@@ -46,7 +46,7 @@ public class EnemyStateMachine : MonoBehaviour
                     transform.position,
                     Vector2.left,
                     detectionRange,
-                    heroLayer
+                    targetLayers // Use the new variable here
                 );
                 if (hit.collider != null)
                 {
@@ -55,7 +55,6 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case EnemyState.Attack:
-                enemyAnimationController.SetWalk(false);
                 if (!attackTriggered)
                 {
                     Debug.Log("Attack not triggered by Octopus!");
@@ -65,6 +64,7 @@ public class EnemyStateMachine : MonoBehaviour
                     // Decide what to do after the attack cycle
                     Invoke(nameof(ResumeAfterAttack), 0.5f);
                 }
+                // enemyAnimationController.SetWalk(false);
                 break;
 
             case EnemyState.Hit:
@@ -99,33 +99,44 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void PerformAttack()
     {
-        // Find the enemy in front of us to hit
+        // Find the target in front of us using the multi-layer mask
         RaycastHit2D hit = Physics2D.Raycast(
             transform.position,
             Vector2.left,
             detectionRange,
-            heroLayer
+            targetLayers
         );
 
         if (hit.collider != null)
         {
-            // CORRECT: Get HERO components, not enemy components
-            HeroStateMachine heroState = hit.collider.GetComponent<HeroStateMachine>();
-            Rigidbody2D heroRb = hit.collider.GetComponent<Rigidbody2D>();
-            HeroHealth heroHealth = hit.collider.GetComponent<HeroHealth>(); // Assuming hero has this script
-
-            // Apply damage to hero
+            // First, check if the target is a Hero
+            HeroHealth heroHealth = hit.collider.GetComponentInParent<HeroHealth>();
             if (heroHealth != null)
             {
+                // Apply damage to the hero
                 heroHealth.TakeDamage((int)damage);
-            }
 
-            // Apply knockback to hero
-            if (heroState != null && heroRb != null)
+                // Apply knockback to the hero
+                HeroStateMachine heroState = hit.collider.GetComponentInParent<HeroStateMachine>();
+                Rigidbody2D heroRb = hit.collider.GetComponentInParent<Rigidbody2D>();
+                if (heroState != null && heroRb != null)
+                {
+                    heroState.OnTakeDamage();
+                    // Push the hero to the LEFT (away from the enemy)
+                    heroRb.AddForce(Vector2.left * knockbackForce, ForceMode2D.Impulse);
+                }
+            }
+            // If it wasn't a hero, check if it's the Player's Tower
+            else
             {
-                heroState.OnTakeDamage();
-                // CORRECT: Push hero LEFT (away from the enemy)
-                heroRb.AddForce(Vector2.left * knockbackForce, ForceMode2D.Impulse);
+                // Note: Make sure your player's tower has the TowerHealthAnimated script
+                TowerHealthAnimated towerHealth =
+                    hit.collider.GetComponentInParent<TowerHealthAnimated>();
+                if (towerHealth != null)
+                {
+                    // Apply damage to the tower
+                    towerHealth.TakeDamage((int)damage);
+                }
             }
         }
     }
@@ -141,6 +152,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (enemyState != EnemyState.Defeated)
         {
+            Debug.Log("Octopus took damage!");
             isKnockedBack = true;
             Invoke(nameof(EndKnockback), 0.2f);
             SetState(EnemyState.Hit);
@@ -169,7 +181,7 @@ public class EnemyStateMachine : MonoBehaviour
                 transform.position,
                 Vector2.left,
                 detectionRange,
-                heroLayer
+                targetLayers
             );
             if (hit.collider != null)
             {

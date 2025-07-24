@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 20
+  maxHealth: 100
   heroSprites: []
   heroSr: {fileID: 0}
 --- !u!114 &-6730589493453217024
@@ -250,7 +250,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   moveSpeed: 0.5
-  damage: 10
+  damage: 5
   knockbackForce: 5
 --- !u!114 &3932146915093473476
 MonoBehaviour:
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 0.5
   attackCooldown: 1
-  damage: 25
+  damage: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
