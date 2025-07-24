@@ -6,14 +6,14 @@ public class EnergyUpgradeSlot : MonoBehaviour
 {
     [Header("Dependencies")]
     public EnergyManager energyManager;
-    public Button upgradeButton;         // tombol upgrade energy
+    public Button upgradeButton;        
 
     [Header("Upgrade Settings")]
-    public int upgradeCost = 40;         // biaya awal upgrade
-    public TextMeshProUGUI priceText;    // teks harga upgrade
-    public TextMeshProUGUI levelText;    // teks level upgrade
+    public int upgradeCost = 40;         
+    public TextMeshProUGUI priceText;    
+    public TextMeshProUGUI levelText;    
 
-    private int currentLevel = 1;        // level upgrade saat ini
+    private int currentLevel = 1;       
 
     private void Start()
     {

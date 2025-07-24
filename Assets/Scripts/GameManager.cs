@@ -3,10 +3,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public EnemyTowerHealth enemyTowerHealth;
-    public HeroStateMachine heroStateMachine; // drag hero utama
-    public GameObject heroPrefab; // prefab hero baru yang akan di-spawn
-    public Transform enemyTowerSpawnPoint; // posisi spawn hero baru
-    public BossController bossController; // script boss
+    public HeroStateMachine heroStateMachine; 
+    public GameObject heroPrefab; 
+    public Transform enemyTowerSpawnPoint; 
+    public BossController bossController; 
 
     private bool hasWon = false;
 
@@ -23,15 +23,15 @@ public class GameManager : MonoBehaviour
     {
         hasWon = true;
 
-        Debug.Log("🏆 Victory!");
+        Debug.Log("Victory!");
 
-        // 1️⃣ Hero berhenti dan idle
+        // Hero berhenti dan idle
         heroStateMachine.SetState(HeroState.Idle);
 
-        // 2️⃣ Spawn hero baru di tower enemy
+        // Spawn hero baru di tower enemy
         Instantiate(heroPrefab, enemyTowerSpawnPoint.position, Quaternion.identity);
 
-        // 3️⃣ Boss kabur
+        //Boss kabur
         bossController.Flee();
     }
 }

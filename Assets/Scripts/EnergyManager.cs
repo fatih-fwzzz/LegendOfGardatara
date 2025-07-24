@@ -26,7 +26,7 @@ public class EnergyManager : MonoBehaviour
     private Coroutine regenCoroutine;
     private Coroutine uiUpdateCoroutine;
 
-    private bool energyChanged = false; // flag update UI stabil
+    private bool energyChanged = false; 
 
     void Start()
     {
@@ -44,7 +44,7 @@ public class EnergyManager : MonoBehaviour
             if (currentEnergy > maxEnergy)
                 currentEnergy = maxEnergy;
 
-            energyChanged = true; // flag UI perlu update
+            energyChanged = true; 
 
             yield return new WaitForSeconds(regenInterval);
         }
@@ -59,7 +59,7 @@ public class EnergyManager : MonoBehaviour
                 UpdateEnergyText();
                 energyChanged = false;
             }
-            yield return new WaitForSeconds(0.1f); // update UI stabil setiap 0.1 detik
+            yield return new WaitForSeconds(0.1f); 
         }
     }
 
@@ -68,7 +68,7 @@ public class EnergyManager : MonoBehaviour
         if (currentEnergy >= amount)
         {
             currentEnergy -= amount;
-            energyChanged = true; // tandai perlu update
+            energyChanged = true; 
             Debug.Log($"[EnergyManager] Energy used: {amount}, remaining: {currentEnergy}");
             return true;
         }

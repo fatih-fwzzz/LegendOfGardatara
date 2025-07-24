@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraShake : MonoBehaviour
 {
-    public static CameraShake instance; // singleton agar mudah dipanggil
+    public static CameraShake instance; 
 
     private Vector3 originalPos;
     private Coroutine currentShake;
@@ -16,11 +16,7 @@ public class CameraShake : MonoBehaviour
             Destroy(gameObject);
     }
 
-    /// <summary>
-    /// Memanggil shake kamera dengan durasi dan kekuatan tertentu.
-    /// </summary>
-    /// <param name="duration">Lama shake (detik)</param>
-    /// <param name="magnitude">Kekuatan shake</param>
+    
     public void Shake(float duration, float magnitude)
     {
         if (currentShake != null)

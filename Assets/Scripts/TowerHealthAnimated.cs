@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class TowerHealthAnimated : MonoBehaviour
@@ -17,18 +16,21 @@ public class TowerHealthAnimated : MonoBehaviour
     public Slider healthSlider;
 
     [Header("Effects")]
-    public CameraShake cameraShake;         // Drag CameraShake
-    public GameObject fireEffectPrefab;     // Prefab api/asap
-    private GameObject fireEffectInstance;  // Instance api/asap aktif
+    public CameraShake cameraShake;
+    public GameObject fireEffectPrefab;
+    private GameObject fireEffectInstance;
 
     [Header("Flash Settings")]
-    public Color flashColor = Color.white;  // ✅ Warna flash yang dapat dipilih di Inspector
-    public float flashDuration = 0.1f;      // durasi flash
+    public Color flashColor = Color.white;
+    public float flashDuration = 0.1f;
     private Color originalColor;
     private Coroutine flashCoroutine;
 
-    [Header("Defeat Scene Settings")]
-    public string defeatSceneName = "DefeatScene"; // Ganti nama sesuai scene defeat Anda
+    [Header("Defeat Settings")]
+    public float defeatDelay = 2f; // delay sebelum defeat popup muncul
+
+    private bool hasDefeated = false;
+    private DefeatManager defeatManager; // reference ke DefeatManager
 
     private void Start()
     {
@@ -41,11 +43,16 @@ public class TowerHealthAnimated : MonoBehaviour
         }
 
         if (towerSr != null)
-        {
             originalColor = towerSr.color;
-        }
 
         UpdateTowerSprite();
+
+        // Cari DefeatManager secara otomatis di scene
+        defeatManager = FindAnyObjectByType<DefeatManager>();
+        if (defeatManager == null)
+        {
+            Debug.LogWarning("[TowerHealthAnimated] DefeatManager tidak ditemukan di scene, defeat popup tidak akan muncul saat tower hancur.");
+        }
     }
 
     private void UpdateTowerSprite()
@@ -55,7 +62,7 @@ public class TowerHealthAnimated : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            towerSr.sprite = towerSprites[0]; // Saat hancur tampilkan sprite element 0 sesuai permintaan
+            towerSr.sprite = towerSprites[0];
         }
         else
         {
@@ -71,24 +78,20 @@ public class TowerHealthAnimated : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         if (healthSlider != null)
-        {
             healthSlider.value = currentHealth;
-        }
 
         UpdateTowerSprite();
 
-        // ✅ Efek shake kamera saat kena hit
+        // Kamera shake
         if (cameraShake != null)
-        {
             cameraShake.Shake(0.15f, 0.15f);
-        }
 
-        // ✅ Flash warna custom saat kena hit
+        // Flash saat terkena damage
         if (flashCoroutine != null)
             StopCoroutine(flashCoroutine);
         flashCoroutine = StartCoroutine(FlashEffect());
 
-        // ✅ Tampilkan api/asap saat health < 30%
+        // Tampilkan api saat health < 30%
         if (currentHealth < maxHealth * 0.3f)
         {
             if (fireEffectInstance == null && fireEffectPrefab != null)
@@ -97,10 +100,11 @@ public class TowerHealthAnimated : MonoBehaviour
             }
         }
 
-        // ✅ Trigger defeat scene saat health = 0
-        if (currentHealth <= 0)
+        // Trigger defeat jika health 0
+        if (currentHealth <= 0 && !hasDefeated)
         {
-            Invoke(nameof(TriggerDefeatScene), 2f); // delay agar terlihat
+            hasDefeated = true;
+            StartCoroutine(TriggerDefeatAfterDelay());
         }
     }
 
@@ -114,15 +118,24 @@ public class TowerHealthAnimated : MonoBehaviour
         }
     }
 
-    private void TriggerDefeatScene()
+    private IEnumerator TriggerDefeatAfterDelay()
     {
-        if (!string.IsNullOrEmpty(defeatSceneName))
+        yield return new WaitForSeconds(defeatDelay);
+
+        // Play defeat BGM 
+        if (AudioManager.Instance != null && AudioManager.Instance.defeatBGM != null)
         {
-            SceneManager.LoadScene(defeatSceneName);
+            AudioManager.Instance.PlayBGM(AudioManager.Instance.defeatBGM);
+        }
+
+        // Trigger defeat popup jika DefeatManager ketemu
+        if (defeatManager != null)
+        {
+            defeatManager.TriggerDefeat();
         }
         else
         {
-            Debug.LogWarning("[TowerHealthAnimated] Defeat scene name belum diisi di inspector.");
+            Debug.LogWarning("defeat manager nggak ketemu");
         }
     }
 }

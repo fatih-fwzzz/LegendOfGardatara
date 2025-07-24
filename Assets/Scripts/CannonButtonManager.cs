@@ -8,12 +8,18 @@ public class CannonButtonManager : MonoBehaviour
     [Header("References")]
     public Button cannonButton;
     public GameObject cannonPrefab;
-    public Transform spawnPoint; // tempat spawn meriam
-    public TextMeshProUGUI buttonText; // TMP untuk countdown
+    public Transform spawnPoint;
+    public TextMeshProUGUI buttonText;
 
     [Header("Cooldown Settings")]
     public float cooldownTime = 30f;
     private bool isCooldown = false;
+
+    [Header("Blink Settings")]
+    public float blinkSpeed = 2f;    
+    public float blinkAlphaMin = 0.3f; 
+
+    private Coroutine blinkCoroutine;
 
     private void Start()
     {
@@ -32,15 +38,15 @@ public class CannonButtonManager : MonoBehaviour
         }
     }
 
-   
-    // Dipanggil saat tombol ditekan
- 
     public void ActivateCannon()
     {
-         AudioManager.Instance.PlaySFX(AudioManager.Instance.shootCannonSFX);
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.shootCannonSFX);
+
         if (!isCooldown)
         {
             Debug.Log("Cannon Button pressed, spawning cannon...");
+            StopBlinking(); 
             SpawnCannon();
             StartCoroutine(CooldownRoutine());
         }
@@ -50,9 +56,6 @@ public class CannonButtonManager : MonoBehaviour
         }
     }
 
- 
-    // Spawn cannonPrefab di spawnPoint
-   
     private void SpawnCannon()
     {
         if (cannonPrefab != null && spawnPoint != null)
@@ -66,9 +69,6 @@ public class CannonButtonManager : MonoBehaviour
         }
     }
 
-    
-    // Menjalankan cooldown tombol dengan countdown text
-   
     private IEnumerator CooldownRoutine()
     {
         isCooldown = true;
@@ -92,5 +92,55 @@ public class CannonButtonManager : MonoBehaviour
 
         cannonButton.interactable = true;
         isCooldown = false;
+
+      
+        StartBlinking();
+    }
+
+    private void StartBlinking()
+    {
+        if (blinkCoroutine != null)
+            StopCoroutine(blinkCoroutine);
+
+        blinkCoroutine = StartCoroutine(BlinkButtonRoutine());
+    }
+
+    private void StopBlinking()
+    {
+        if (blinkCoroutine != null)
+        {
+            StopCoroutine(blinkCoroutine);
+            blinkCoroutine = null;
+        }
+
+       
+        Image buttonImage = cannonButton.GetComponent<Image>();
+        if (buttonImage != null)
+        {
+            Color originalColor = buttonImage.color;
+            originalColor.a = 1f;
+            buttonImage.color = originalColor;
+        }
+    }
+
+    private IEnumerator BlinkButtonRoutine()
+    {
+        Image buttonImage = cannonButton.GetComponent<Image>();
+        if (buttonImage == null)
+        {
+            Debug.LogWarning("CannonButton tidak memiliki komponen Image untuk efek blink.");
+            yield break;
+        }
+
+        Color originalColor = buttonImage.color;
+
+        while (true) 
+        {
+            float alpha = (Mathf.Sin(Time.time * blinkSpeed) * 0.5f + 0.5f) * (1f - blinkAlphaMin) + blinkAlphaMin;
+            Color newColor = originalColor;
+            newColor.a = alpha;
+            buttonImage.color = newColor;
+            yield return null;
+        }
     }
 }

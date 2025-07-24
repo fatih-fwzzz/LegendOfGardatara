@@ -5,12 +5,12 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawner Settings")]
     public GameObject enemyPrefab;
-    public Transform[] spawnPoints; // drag semua spawn point untuk enemy
-    public float initialDelay = 3f; // 3 detik setelah game mulai
-    public float waveInterval = 15f; // interval antar wave
+    public Transform[] spawnPoints; 
+    public float initialDelay = 3f; 
+    public float waveInterval = 15f; 
 
     [Header("Dependencies")]
-    public EnemyTowerHealth enemyTowerHealth; // drag EnemyTowerHealth dari scene ke sini
+    public EnemyTowerHealth enemyTowerHealth; 
 
     private void Start()
     {

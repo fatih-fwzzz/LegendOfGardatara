@@ -19,15 +19,14 @@ public class BossController : MonoBehaviour
     {
         isFleeing = true;
         if (animator != null)
-            animator.SetTrigger("Flee"); // pastikan animasi ada di Animator
+            animator.SetTrigger("Flee"); 
     }
 
     private void Update()
     {
         if (isFleeing)
         {
-            // Boss terbang ke atas kanan
-            rb.linearVelocity = new Vector2(2f, 3f) * fleeSpeed;
+            rb.linearVelocity = new Vector2(1f, 1f) * fleeSpeed;
         }
     }
 }

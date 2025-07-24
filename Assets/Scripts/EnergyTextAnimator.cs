@@ -6,18 +6,17 @@ using UnityEngine.UI;
 public class EnergyTextAnimator : MonoBehaviour
 {
     public TextMeshProUGUI energyText;
-    public float popScale = 1f;
+    public float popScale = 0.8f;
     public float animDuration = 0.3f;
-    public Color glowColor = Color.yellow; // warna glow saat animasi
+    public Color glowColor = Color.yellow; 
 
-    public CanvasGroup glowCanvasGroup;
-    public Image glowImage; // glow image di energyText
-    public Color glowImageColor = Color.yellow; // warna glow saat animasi text
-    public float glowMaxAlpha = 0.8f;
+    public Image glowImage; 
+    public Color glowImageColor = Color.yellow; 
 
     private Color originalColor;
     private Vector3 originalScale;
     private Color originalGlowImageColor;
+    private Vector3 originalGlowImageScale;
 
     private void Awake()
     {
@@ -28,10 +27,11 @@ public class EnergyTextAnimator : MonoBehaviour
         originalScale = energyText.transform.localScale;
 
         if (glowImage != null)
+        {
             originalGlowImageColor = glowImage.color;
-
-        if (glowCanvasGroup != null)
-            glowCanvasGroup.alpha = 0f;
+            originalGlowImageScale = glowImage.transform.localScale;
+            glowImage.enabled = true; 
+        }
     }
 
     public void PlayPopAnimation()
@@ -44,6 +44,7 @@ public class EnergyTextAnimator : MonoBehaviour
     {
         float timer = 0f;
         Vector3 targetScale = originalScale * popScale;
+        Vector3 targetGlowScale = originalGlowImageScale * popScale;
 
         while (timer < animDuration)
         {
@@ -53,11 +54,11 @@ public class EnergyTextAnimator : MonoBehaviour
             energyText.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
             energyText.color = Color.Lerp(originalColor, glowColor, t);
 
-            if (glowCanvasGroup != null)
-                glowCanvasGroup.alpha = Mathf.Lerp(0f, glowMaxAlpha, t);
-
             if (glowImage != null)
+            {
+                glowImage.transform.localScale = Vector3.Lerp(originalGlowImageScale, targetGlowScale, t);
                 glowImage.color = Color.Lerp(originalGlowImageColor, glowImageColor, t);
+            }
 
             yield return null;
         }
@@ -71,23 +72,23 @@ public class EnergyTextAnimator : MonoBehaviour
             energyText.transform.localScale = Vector3.Lerp(targetScale, originalScale, t);
             energyText.color = Color.Lerp(glowColor, originalColor, t);
 
-            if (glowCanvasGroup != null)
-                glowCanvasGroup.alpha = Mathf.Lerp(glowMaxAlpha, 0f, t);
-
             if (glowImage != null)
+            {
+                glowImage.transform.localScale = Vector3.Lerp(targetGlowScale, originalGlowImageScale, t);
                 glowImage.color = Color.Lerp(glowImageColor, originalGlowImageColor, t);
+            }
 
             yield return null;
         }
 
+        // Ensure exact reset after lerp
         energyText.transform.localScale = originalScale;
         energyText.color = originalColor;
 
-        if (glowCanvasGroup != null)
-            glowCanvasGroup.alpha = 0f;
-
         if (glowImage != null)
+        {
+            glowImage.transform.localScale = originalGlowImageScale;
             glowImage.color = originalGlowImageColor;
+        }
     }
 }
-

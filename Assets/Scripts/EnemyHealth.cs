@@ -14,8 +14,7 @@ public class EnemyHealth : MonoBehaviour
 
     [Header("Reference")]
     public RobotMovement robotMovement;
-    public Rigidbody2D rb; // tambahkan jika ingin knockback fisik
-
+    public Rigidbody2D rb; 
     private void Start()
     {
         currentHealth = maxHealth;
@@ -27,17 +26,12 @@ public class EnemyHealth : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
     }
 
-    /// <summary>
-    /// Dipanggil saat enemy menerima damage (int).
-    /// </summary>
+   
     public void TakeDamage(int damage)
     {
         TakeDamage((float)damage);
     }
 
-    /// <summary>
-    /// Dipanggil saat enemy menerima damage (float).
-    /// </summary>
     public void TakeDamage(float damage)
     {
         currentHealth -= Mathf.RoundToInt(damage);
@@ -48,9 +42,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Dipanggil saat menerima damage dan knockback arah attacker.
-    /// </summary>
+   
     public void TakeDamage(int damage, Vector2 attackerPosition)
     {
         currentHealth -= damage;
@@ -67,9 +59,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Knockback menggunakan delay (non-arah).
-    /// </summary>
+    
     private IEnumerator KnockbackDelay()
     {
         isKnockedBack = true;
@@ -92,9 +82,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Knockback dengan arah attacker.
-    /// </summary>
+    
     private IEnumerator ApplyKnockback(Vector2 direction)
     {
         isKnockedBack = true;
@@ -123,9 +111,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Menghandle kematian enemy.
-    /// </summary>
     private void Die()
     {
         Destroy(gameObject);

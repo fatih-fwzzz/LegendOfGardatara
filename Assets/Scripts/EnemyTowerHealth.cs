@@ -16,13 +16,13 @@ public class EnemyTowerHealth : MonoBehaviour
     public Slider healthSlider;
 
     [Header("Effects")]
-    public CameraShake cameraShake;         // Drag CameraShake ke sini
-    public GameObject fireEffectPrefab;     // Prefab api/asap jika ingin
+    public CameraShake cameraShake;        
+    public GameObject fireEffectPrefab;    
     private GameObject fireEffectInstance;
 
     [Header("Flash Settings")]
-    public Color flashColor = Color.white;  // Warna flash bisa diatur Inspector
-    public float flashDuration = 0.1f;      // Durasi flash
+    public Color flashColor = Color.white;  
+    public float flashDuration = 0.1f;      
     private Color originalColor;
     private Coroutine flashCoroutine;
 
@@ -63,7 +63,7 @@ public class EnemyTowerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isDestroyed) return; // Abaikan jika sudah hancur
+        if (isDestroyed) return; 
 
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -73,16 +73,16 @@ public class EnemyTowerHealth : MonoBehaviour
 
         UpdateTowerSprite();
 
-        // ✅ Efek shake
+        // Efek shake
         if (cameraShake != null)
             cameraShake.Shake(0.15f, 0.15f);
 
-        // ✅ Flash warna saat kena hit
+        // Flash warna saat kena hit
         if (flashCoroutine != null)
             StopCoroutine(flashCoroutine);
         flashCoroutine = StartCoroutine(FlashEffect());
 
-        // ✅ Tampilkan api/asap jika health < 30%
+        // Tampilkan api/asap jika health < 30%
         if (currentHealth < maxHealth * 0.3f)
         {
             if (fireEffectInstance == null && fireEffectPrefab != null)
@@ -91,12 +91,12 @@ public class EnemyTowerHealth : MonoBehaviour
             }
         }
 
-        // ✅ Set isDestroyed tanpa Destroy tower
+        // Set isDestroyed tanpa Destroy tower
         if (currentHealth <= 0)
         {
             isDestroyed = true;
             Debug.Log("[EnemyTowerHealth] Tower musuh hancur.");
-            // Tambahkan logic reward/menang jika tower musuh hancur
+            
         }
     }
 
