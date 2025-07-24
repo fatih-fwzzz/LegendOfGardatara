@@ -8,9 +8,10 @@ public class SceneController : MonoBehaviour
     public GameObject continueText;
     private int currSceneidx = 0;
     public float fadeDuration = 1f;
-    public float slideDuration = 1f; // waktu slide sebelum next
+    public float slideDuration = 1f;
 
     private bool readyToContinue = false;
+    private bool userTapped = false;
 
     private void Start()
     {
@@ -47,7 +48,17 @@ public class SceneController : MonoBehaviour
                 sr.color = c;
             }
 
-            yield return new WaitForSeconds(slideDuration);
+            float elapsed = 0f;
+            while (elapsed < slideDuration)
+            {
+                if (userTapped)
+                {
+                    userTapped = false;
+                    break; // skip waktu tunggu jika tap
+                }
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
 
             currSceneidx++;
         }
@@ -98,7 +109,11 @@ public class SceneController : MonoBehaviour
     {
         if (readyToContinue && Input.anyKeyDown)
         {
-            SceneManager.LoadSceneAsync(2); // pindah scene saat user tap
+            SceneManager.LoadSceneAsync(2); 
+        }
+        else if (!readyToContinue && Input.anyKeyDown)
+        {
+            userTapped = true; 
         }
     }
 }
