@@ -9,36 +9,28 @@ public class HeroAnimationController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    /// <summary>
-    /// Mengatur animasi berjalan.
-    /// </summary>
+  
     public void SetWalk(bool isWalking)
     {
         animator.SetBool("isWalking", isWalking);
     }
 
-    /// <summary>
-    /// Trigger animasi menyerang.
-    /// </summary>
-    public void SetAttack()
+   
+    public void SetAttack(bool isAttack)
     {
-        animator.SetTrigger("isAttacking");
+        animator.SetBool("isAttacking", isAttack);
     }
 
-    /// <summary>
-    /// Trigger animasi terkena hit.
-    /// </summary>
+   
     public void TriggerHit()
     {
-        animator.SetTrigger("isHit");
+        animator.SetTrigger("Hit");
     }
 
-    /// <summary>
-    /// Trigger animasi defeated.
-    /// </summary>
+   
     public void SetDefeated()
     {
-        animator.SetTrigger("isDefeated");
+        Debug.Log("Play Kancil Dead animation");
+        animator.SetTrigger("Defeated");
     }
-    
 }

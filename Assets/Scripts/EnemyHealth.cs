@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -15,9 +15,21 @@ public class EnemyHealth : MonoBehaviour
     [Header("Reference")]
     public RobotMovement robotMovement;
     public Rigidbody2D rb; 
+
+    private EnemyStateMachine stateMachine;
+    private bool isDefeated = false;
+
     private void Start()
     {
         currentHealth = maxHealth;
+        stateMachine = GetComponent<EnemyStateMachine>();
+
+        if (stateMachine == null)
+        {
+            Debug.LogError(
+                "CRITICAL ERROR: EnemyStateMachine component not found on " + gameObject.name + "!"
+            );
+        }
 
         if (robotMovement == null)
             robotMovement = GetComponent<RobotMovement>();
@@ -26,23 +38,34 @@ public class EnemyHealth : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
     }
 
-   
+    
     public void TakeDamage(int damage)
     {
         TakeDamage((float)damage);
     }
 
+ 
     public void TakeDamage(float damage)
     {
+        if (isDefeated)
+            return;
         currentHealth -= Mathf.RoundToInt(damage);
 
-        if (!isKnockedBack)
+     
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Health is zero or less. Calling Die().");
+            Die();
+        }
+
+
+        else if (!isKnockedBack)
         {
             StartCoroutine(KnockbackDelay());
         }
     }
 
-   
+ 
     public void TakeDamage(int damage, Vector2 attackerPosition)
     {
         currentHealth -= damage;
@@ -59,7 +82,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    
     private IEnumerator KnockbackDelay()
     {
         isKnockedBack = true;
@@ -82,7 +104,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    
     private IEnumerator ApplyKnockback(Vector2 direction)
     {
         isKnockedBack = true;
@@ -111,8 +132,22 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+  
     private void Die()
     {
-        Destroy(gameObject);
+        if (isDefeated)
+            return; 
+        isDefeated = true;
+
+      
+        if (stateMachine != null)
+        {
+            stateMachine.OnDefeated();
+        }
+        else
+        {
+           
+            Destroy(gameObject);
+        }
     }
 }

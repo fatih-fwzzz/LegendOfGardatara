@@ -112,7 +112,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4917798753b9e49d686bc5ab29c3c5e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   heroRb: {fileID: 7505260523270773668}
-  speed: 1
+  speed: 1.5
 --- !u!61 &5119065963626457196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 973533104853547f19d3cd316b13866f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   health: 0
   maxHealth: 100
   heroSprites:
@@ -231,8 +231,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85be65687a6774032856751801a59d2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &-1053734567294886411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,14 +243,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9baca5fbb8eb4db9ad883d5c9519145, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   heroState: 0
-  detectionRange: 0.9
+  detectionRange: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  moveSpeed: 2
+  moveSpeed: 0.5
+  damage: 5
+  knockbackForce: 5
 --- !u!114 &3932146915093473476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,8 +263,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d88bafbf711604eb9a53a9921ea65c82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   attackRange: 0.5
   attackCooldown: 0.8
   damage: 25

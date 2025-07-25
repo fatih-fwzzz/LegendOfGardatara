@@ -6,7 +6,7 @@ public class HeroAutoAttack : MonoBehaviour
     public float attackCooldown = 1f;
     public float damage = 50f;
     public LayerMask enemyLayer;
-    public LayerMask towerLayer; // Tambahan
+    public LayerMask towerLayer; 
 
     private HeroAnimationController heroAnimationController;
     private float lastAttackTime;
@@ -43,14 +43,17 @@ public class HeroAutoAttack : MonoBehaviour
         }
         else
         {
+            heroAnimationController.SetAttack(false);
             heroAnimationController.SetWalk(true);
         }
     }
 
     private void Attack(GameObject enemyObject)
     {
+        heroAnimationController.SetAttack(true);
         AudioManager.Instance.PlaySFX(AudioManager.Instance.hitSFX);
-        heroAnimationController.SetAttack();
+        
+
 
         EnemyHealth enemyHealth = enemyObject.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
@@ -61,7 +64,9 @@ public class HeroAutoAttack : MonoBehaviour
 
     private void AttackTower(GameObject towerObject)
     {
-        heroAnimationController.SetAttack();
+
+        heroAnimationController.SetAttack(true);
+
         AudioManager.Instance.PlaySFX(AudioManager.Instance.hitSFX);
 
         EnemyTowerHealth enemyTowerHealth = towerObject.GetComponent<EnemyTowerHealth>();

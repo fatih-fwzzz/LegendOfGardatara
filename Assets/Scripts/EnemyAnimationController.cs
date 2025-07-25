@@ -4,7 +4,7 @@ public class EnemyAnimationController : MonoBehaviour
 {
     private Animator animator;
 
-    private void Awake()
+    private void Start()
     {
         animator = GetComponent<Animator>();
     }
@@ -14,8 +14,19 @@ public class EnemyAnimationController : MonoBehaviour
         animator.SetBool("isWalking", walking);
     }
 
-    public void SetAttack()
+    public void SetAttack(bool isAttack)
     {
-        animator.SetTrigger("Attack");
+        animator.SetBool("isAttacking", isAttack);
+    }
+
+    public void TriggerHit()
+    {
+        animator.SetTrigger("Hit");
+    }
+
+    public void SetDefeated()
+    {
+        Debug.Log("Play Octopus Dead animation");
+        animator.SetTrigger("Defeated");
     }
 }
