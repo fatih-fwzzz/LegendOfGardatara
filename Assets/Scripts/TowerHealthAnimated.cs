@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class TowerHealthAnimated : MonoBehaviour
 {
@@ -51,7 +51,9 @@ public class TowerHealthAnimated : MonoBehaviour
         defeatManager = FindAnyObjectByType<DefeatManager>();
         if (defeatManager == null)
         {
-            Debug.LogWarning("[TowerHealthAnimated] DefeatManager tidak ditemukan di scene, defeat popup tidak akan muncul saat tower hancur.");
+            Debug.LogWarning(
+                "[TowerHealthAnimated] DefeatManager tidak ditemukan di scene, defeat popup tidak akan muncul saat tower hancur."
+            );
         }
     }
 
@@ -67,7 +69,11 @@ public class TowerHealthAnimated : MonoBehaviour
         else
         {
             float healthPercent = (float)currentHealth / maxHealth;
-            int spriteIndex = Mathf.Clamp(Mathf.FloorToInt(healthPercent * towerSprites.Length), 0, towerSprites.Length - 1);
+            int spriteIndex = Mathf.Clamp(
+                Mathf.FloorToInt(healthPercent * towerSprites.Length),
+                0,
+                towerSprites.Length - 1
+            );
             towerSr.sprite = towerSprites[spriteIndex];
         }
     }
@@ -96,7 +102,12 @@ public class TowerHealthAnimated : MonoBehaviour
         {
             if (fireEffectInstance == null && fireEffectPrefab != null)
             {
-                fireEffectInstance = Instantiate(fireEffectPrefab, transform.position, Quaternion.identity, transform);
+                fireEffectInstance = Instantiate(
+                    fireEffectPrefab,
+                    transform.position,
+                    Quaternion.identity,
+                    transform
+                );
             }
         }
 
@@ -122,7 +133,7 @@ public class TowerHealthAnimated : MonoBehaviour
     {
         yield return new WaitForSeconds(defeatDelay);
 
-        // Play defeat BGM 
+        // Play defeat BGM
         if (AudioManager.Instance != null && AudioManager.Instance.defeatBGM != null)
         {
             AudioManager.Instance.PlayBGM(AudioManager.Instance.defeatBGM);

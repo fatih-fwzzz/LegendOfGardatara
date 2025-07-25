@@ -1,22 +1,22 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawner Settings")]
     public GameObject enemyPrefab;
-    public Transform[] spawnPoints; 
-    public float initialDelay = 3f; 
-    public float waveInterval = 15f; 
+    public Transform[] spawnPoints;
+    public float initialDelay = 3f;
+    public float waveInterval = 15f;
 
     [Header("Dependencies")]
-    public EnemyTowerHealth enemyTowerHealth; 
+    public EnemyTowerHealth enemyTowerHealth;
 
     private void Start()
     {
         if (enemyTowerHealth == null)
         {
-            enemyTowerHealth = FindObjectOfType<EnemyTowerHealth>();
+            enemyTowerHealth = FindFirstObjectByType<EnemyTowerHealth>();
         }
 
         StartCoroutine(SpawnWaveSequence());
@@ -25,22 +25,26 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator SpawnWaveSequence()
     {
         yield return new WaitForSeconds(initialDelay);
-        if (IsTowerDestroyed()) yield break;
+        if (IsTowerDestroyed())
+            yield break;
 
         SpawnEnemy();
 
         yield return new WaitForSeconds(waveInterval);
-        if (IsTowerDestroyed()) yield break;
+        if (IsTowerDestroyed())
+            yield break;
 
         yield return StartCoroutine(SpawnWave(2, waveInterval));
 
         yield return new WaitForSeconds(waveInterval);
-        if (IsTowerDestroyed()) yield break;
+        if (IsTowerDestroyed())
+            yield break;
 
         yield return StartCoroutine(SpawnWave(3, waveInterval));
 
         yield return new WaitForSeconds(waveInterval);
-        if (IsTowerDestroyed()) yield break;
+        if (IsTowerDestroyed())
+            yield break;
 
         yield return StartCoroutine(SpawnWave(4, waveInterval));
 
@@ -53,7 +57,8 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < enemyCount; i++)
         {
-            if (IsTowerDestroyed()) yield break;
+            if (IsTowerDestroyed())
+                yield break;
 
             SpawnEnemy();
             yield return new WaitForSeconds(interval);

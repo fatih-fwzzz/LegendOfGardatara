@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -5,9 +6,9 @@ public class BossController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
 
+    [Header("Boss Fly Config")]
+    public float bossFlyWait = 0.5f;
     public float fleeSpeed = 5f;
-
-    private bool isFleeing = false;
 
     private void Start()
     {
@@ -17,16 +18,16 @@ public class BossController : MonoBehaviour
 
     public void Flee()
     {
-        isFleeing = true;
         if (animator != null)
-            animator.SetTrigger("Flee"); 
+        {
+            animator.SetTrigger("Flee");
+            StartCoroutine(FleeAfterDelay());
+        }
     }
 
-    private void Update()
+    private IEnumerator FleeAfterDelay()
     {
-        if (isFleeing)
-        {
-            rb.linearVelocity = new Vector2(1f, 1f) * fleeSpeed;
-        }
+        yield return new WaitForSeconds(bossFlyWait);
+        rb.linearVelocity = Vector2.right * fleeSpeed;
     }
 }

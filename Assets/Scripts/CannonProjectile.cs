@@ -15,9 +15,8 @@ public class CannonProjectile : MonoBehaviour
     [Header("Effects")]
     public Transform spriteTransform;
     public GameObject explosionEffectPrefab;
-    public float spinSpeed = 400f;
+    public float spinSpeed = 100f;
 
-   
     private Rigidbody2D rb;
     private Transform target;
     private Vector3 startPosition;
@@ -46,15 +45,13 @@ public class CannonProjectile : MonoBehaviour
     {
         if (target != null)
         {
-        
             targetPosition = target.position;
 
-          
             if (journeyDistance < 0.1f)
             {
                 Vector2 directDirection = (targetPosition - startPosition).normalized;
                 rb.linearVelocity = directDirection * speed;
-                return; 
+                return;
             }
 
             float distanceCovered = (transform.position - startPosition).magnitude;
@@ -64,7 +61,6 @@ public class CannonProjectile : MonoBehaviour
             Vector3 nextLinearPoint =
                 startPosition + direction * (distanceCovered + speed * Time.fixedDeltaTime);
 
-          
             float arc = arcHeight * Mathf.Sin(fractionOfJourney * Mathf.PI);
             nextLinearPoint.y += arc;
 
@@ -76,7 +72,6 @@ public class CannonProjectile : MonoBehaviour
                 float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg;
                 if (spriteTransform != null)
                 {
-                    
                     transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 }
             }
@@ -87,7 +82,6 @@ public class CannonProjectile : MonoBehaviour
         }
     }
 
-   
     private void FindTarget()
     {
         Transform bestTarget = null;
@@ -112,7 +106,6 @@ public class CannonProjectile : MonoBehaviour
             }
         }
 
-      
         if (bestTarget != null)
         {
             target = bestTarget;
@@ -121,7 +114,7 @@ public class CannonProjectile : MonoBehaviour
 
         // jika tidak ada enemy, serang tower enemy
         GameObject[] enemyTowers = GameObject.FindGameObjectsWithTag(towerTag);
-        closestDistanceSqr = Mathf.Infinity; 
+        closestDistanceSqr = Mathf.Infinity;
 
         if (enemyTowers.Length > 0)
         {
@@ -154,20 +147,17 @@ public class CannonProjectile : MonoBehaviour
         if (hasCollided)
             return;
 
-        
         if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
         {
             hasCollided = true;
-            
+
             collision.gameObject.GetComponentInParent<EnemyHealth>()?.TakeDamage((int)damage);
             ExplodeAndDestroy();
         }
-       
         else if (collision.gameObject.CompareTag("TowerEnemy"))
         {
             hasCollided = true;
 
-          
             Debug.Log(
                 "Projectile collided with object named: '"
                     + collision.gameObject.name
@@ -179,7 +169,6 @@ public class CannonProjectile : MonoBehaviour
 
             if (towerHealth != null)
             {
-               
                 Debug.Log(
                     "SUCCESS: Found TowerHealthAnimated script on parent: "
                         + towerHealth.gameObject.name
@@ -188,14 +177,12 @@ public class CannonProjectile : MonoBehaviour
             }
             else
             {
-              
                 Debug.LogError(
                     "ERROR: Could not find TowerHealthAnimated script on '"
                         + collision.gameObject.name
                         + "' or any of its parents."
                 );
 
-           
                 Transform parentToCheck = collision.transform;
                 while (parentToCheck != null)
                 {
@@ -206,7 +193,6 @@ public class CannonProjectile : MonoBehaviour
 
             ExplodeAndDestroy();
         }
-      
         else
         {
             hasCollided = true;
@@ -216,7 +202,6 @@ public class CannonProjectile : MonoBehaviour
 
     private void ExplodeAndDestroy()
     {
-      
         Destroy(gameObject);
     }
 }

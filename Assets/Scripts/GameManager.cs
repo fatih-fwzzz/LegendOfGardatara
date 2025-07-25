@@ -3,17 +3,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public EnemyTowerHealth enemyTowerHealth;
-    public HeroStateMachine heroStateMachine; 
-    public GameObject heroPrefab; 
-    public Transform enemyTowerSpawnPoint; 
-    public BossController bossController; 
+    public HeroStateMachine heroStateMachine;
+    public GameObject heroPrefab;
+
+    public BossController bossController;
+    public Vector3 bawangSpawnPosition = new Vector3(10.55f, -0.36f, 0f);
 
     private bool hasWon = false;
 
     void Update()
     {
-        if (!hasWon && enemyTowerHealth.currentHealth
- <= 0)
+        if (!hasWon && enemyTowerHealth.currentHealth <= 0)
         {
             WinCondition();
         }
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         heroStateMachine.SetState(HeroState.Idle);
 
         // Spawn hero baru di tower enemy
-        Instantiate(heroPrefab, enemyTowerSpawnPoint.position, Quaternion.identity);
+        Instantiate(heroPrefab, bawangSpawnPosition, Quaternion.identity);
 
         //Boss kabur
         bossController.Flee();

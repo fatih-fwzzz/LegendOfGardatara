@@ -1,7 +1,7 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections;
 
 public class HeroSummonSlot : MonoBehaviour
 {
@@ -24,14 +24,12 @@ public class HeroSummonSlot : MonoBehaviour
 
     void Start()
     {
-        
         if (energyManager == null)
             Debug.LogError("[HeroSummonSlot] EnergyManager belum diassign di Inspector!");
 
         button = GetComponent<Button>() ?? GetComponentInChildren<Button>();
         if (button != null)
             button.onClick.AddListener(TrySummonHero);
-            
         else
             Debug.LogError("[HeroSummonSlot] Button tidak ditemukan!");
 
@@ -49,19 +47,23 @@ public class HeroSummonSlot : MonoBehaviour
 
     void Update()
     {
-        if (energyManager == null) return;
+        if (energyManager == null)
+            return;
 
         if (!isCooldown)
         {
             bool canAfford = energyManager.currentEnergy >= summonCost;
-            if (button != null) button.interactable = canAfford;
-            if (heroImage != null) heroImage.color = canAfford ? Color.white : Color.gray;
+            if (button != null)
+                button.interactable = canAfford;
+            if (heroImage != null)
+                heroImage.color = canAfford ? Color.white : Color.gray;
         }
     }
 
     void TrySummonHero()
     {
-        if (isCooldown || energyManager == null) return;
+        if (isCooldown || energyManager == null)
+            return;
 
         if (energyManager.TryUseEnergy(summonCost))
         {
@@ -75,11 +77,12 @@ public class HeroSummonSlot : MonoBehaviour
 
                 Instantiate(heroPrefab, spawnPoint.position, Quaternion.identity);
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.deploySFX);
-
             }
             else
             {
-                Debug.LogError("[HeroSummonSlot] HeroPrefab belum diassign atau SpawnPoints kosong!");
+                Debug.LogError(
+                    "[HeroSummonSlot] HeroPrefab belum diassign atau SpawnPoints kosong!"
+                );
             }
 
             StartCoroutine(CooldownCoroutine());
@@ -93,8 +96,10 @@ public class HeroSummonSlot : MonoBehaviour
     IEnumerator CooldownCoroutine()
     {
         isCooldown = true;
-        if (button != null) button.interactable = false;
-        if (heroImage != null) heroImage.color = Color.gray;
+        if (button != null)
+            button.interactable = false;
+        if (heroImage != null)
+            heroImage.color = Color.gray;
 
         if (cooldownSlider != null)
         {
@@ -118,13 +123,17 @@ public class HeroSummonSlot : MonoBehaviour
 
         if (energyManager != null && energyManager.currentEnergy >= summonCost)
         {
-            if (button != null) button.interactable = true;
-            if (heroImage != null) heroImage.color = Color.white;
+            if (button != null)
+                button.interactable = true;
+            if (heroImage != null)
+                heroImage.color = Color.white;
         }
         else
         {
-            if (button != null) button.interactable = false;
-            if (heroImage != null) heroImage.color = Color.gray;
+            if (button != null)
+                button.interactable = false;
+            if (heroImage != null)
+                heroImage.color = Color.gray;
         }
     }
 }
