@@ -6,18 +6,18 @@ public class EnergyUpgradeSlot : MonoBehaviour
 {
     [Header("Dependencies")]
     public EnergyManager energyManager;
-    public Button upgradeButton;        
+    public Button upgradeButton;
 
     [Header("Upgrade Settings")]
-    public int upgradeCost = 40;         
-    public TextMeshProUGUI priceText;    
-    public TextMeshProUGUI levelText;    
+    public int upgradeCost = 40;
+    public TextMeshProUGUI priceText;
+    public TextMeshProUGUI levelText;
 
-    private int currentLevel = 1;       
+    private int currentLevel = 1;
 
     private void Start()
     {
-        priceText.text = upgradeCost + "$";
+        priceText.text = upgradeCost.ToString();
         UpdateLevelText();
     }
 
@@ -25,7 +25,9 @@ public class EnergyUpgradeSlot : MonoBehaviour
     {
         if (energyManager != null && upgradeButton != null)
         {
-            upgradeButton.interactable = energyManager.currentEnergy >= upgradeCost;
+           
+            bool isMax = energyManager.maxEnergyStage >= energyManager.maxStageLimit;
+            upgradeButton.interactable = !isMax && energyManager.currentEnergy >= upgradeCost;
         }
     }
 
@@ -41,17 +43,16 @@ public class EnergyUpgradeSlot : MonoBehaviour
             if (upgraded)
             {
                 currentLevel++;
-                UpdateLevelText();
-
                 upgradeCost += 40;
-                priceText.text = upgradeCost + "$";
-
+                priceText.text = upgradeCost.ToString();
                 Debug.Log($"[UpgradeSlot] Upgrade successful. New Level: {currentLevel}, New Cost: {upgradeCost}");
             }
             else
             {
                 Debug.Log("[UpgradeSlot] Already at maximum stage.");
             }
+
+            UpdateLevelText(); 
         }
         else
         {
@@ -61,9 +62,18 @@ public class EnergyUpgradeSlot : MonoBehaviour
 
     private void UpdateLevelText()
     {
-        if (levelText != null)
+        if (levelText != null && energyManager != null)
         {
-            levelText.text = "Level " + currentLevel;
+            if (energyManager.maxEnergyStage >= energyManager.maxStageLimit)
+            {
+                levelText.text = "MAX";
+                upgradeButton.interactable = false;
+                priceText.text = ""; 
+            }
+            else
+            {
+                levelText.text = "Level " + currentLevel;
+            }
         }
     }
 }

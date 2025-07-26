@@ -48,7 +48,13 @@ public class EnemySpawner : MonoBehaviour
 
         yield return StartCoroutine(SpawnWave(4, waveInterval));
 
-        Debug.Log("✅ Semua wave spawn selesai.");
+        Debug.Log("Semua wave spawn selesai. Mulai spawn terus-menerus setiap 3 detik.");
+
+        while (!IsTowerDestroyed())
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(3f); 
+        }
     }
 
     IEnumerator SpawnWave(int enemyCount, float duration)
@@ -82,7 +88,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyTowerHealth != null && enemyTowerHealth.currentHealth <= 0)
         {
-            Debug.Log("⛔ Enemy tower destroyed. Stop spawning waves.");
+            Debug.Log("Enemy tower destroyed. Stop spawning waves.");
             return true;
         }
         return false;

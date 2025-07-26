@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb3f5e76868b4bf887ebeeed759921c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 45
 --- !u!114 &7266638164673669386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82215ca909604690be26d1ae4cdd4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 50
   knockbackForce: 5
   knockbackDelay: 0.15
   robotMovement: {fileID: 7018685237357137414}
@@ -253,7 +253,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   moveSpeed: 0.5
-  damage: 10
+  damage: 30
   knockbackForce: 5
 --- !u!114 &-4932771767919051026
 MonoBehaviour:
@@ -280,8 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 0.5
-  attackCooldown: 1
-  damage: 10
+  attackCooldown: 0.8
+  damage: 30
   heroLayer:
     serializedVersion: 2
     m_Bits: 1024

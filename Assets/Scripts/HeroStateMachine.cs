@@ -8,7 +8,7 @@ public class HeroStateMachine : MonoBehaviour
     public LayerMask enemyLayer;
     public float moveSpeed = 2f;
 
-    public float damage = 10f;
+    public float damage = 0f;
     public float knockbackForce = 5f;
 
     private HeroAnimationController heroAnimationController;
