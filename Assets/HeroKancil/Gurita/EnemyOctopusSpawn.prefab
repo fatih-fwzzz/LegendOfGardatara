@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb3f5e76868b4bf887ebeeed759921c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 45
+  damage: 20
 --- !u!114 &7266638164673669386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   moveSpeed: 0.5
-  damage: 30
+  damage: 20
   knockbackForce: 5
 --- !u!114 &-4932771767919051026
 MonoBehaviour:
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 0.5
   attackCooldown: 0.8
-  damage: 30
+  damage: 20
   heroLayer:
     serializedVersion: 2
     m_Bits: 1024

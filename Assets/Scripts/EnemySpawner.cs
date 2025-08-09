@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnPoints;
     public float initialDelay = 3f;
     public float waveInterval = 15f;
+    public float spawnSeconds = 8f;
 
     [Header("Dependencies")]
     public EnemyTowerHealth enemyTowerHealth;
@@ -48,12 +49,14 @@ public class EnemySpawner : MonoBehaviour
 
         yield return StartCoroutine(SpawnWave(4, waveInterval));
 
-        Debug.Log("Semua wave spawn selesai. Mulai spawn terus-menerus setiap 3 detik.");
+        Debug.Log(
+            $"Semua wave spawn selesai. Mulai spawn terus-menerus setiap {spawnSeconds} detik."
+        );
 
         while (!IsTowerDestroyed())
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(3f); 
+            yield return new WaitForSeconds(spawnSeconds);
         }
     }
 
