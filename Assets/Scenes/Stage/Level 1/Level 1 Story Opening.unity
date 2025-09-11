@@ -167,12 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -466,8 +466,8 @@ Transform:
   m_GameObject: {fileID: 866790119}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.9694, y: 0.0116, z: 0}
-  m_LocalScale: {x: 0.68863183, y: 0.6944982, z: 1}
+  m_LocalPosition: {x: 6.3675995, y: 0.0116, z: 0}
+  m_LocalScale: {x: 0.5506795, y: 0.5553707, z: 0.7996719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2060151609}
@@ -553,8 +553,8 @@ Transform:
   m_GameObject: {fileID: 876992679}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.11, y: 0.0649, z: 0}
-  m_LocalScale: {x: 1, y: 1.2364452, z: 1}
+  m_LocalPosition: {x: 6.48, y: 0.0542, z: 0}
+  m_LocalScale: {x: 0.7996719, y: 0.98875046, z: 0.7996719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2060151609}
@@ -727,8 +727,8 @@ Transform:
   m_GameObject: {fileID: 1036508834}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6818, y: -0.0074, z: 0}
-  m_LocalScale: {x: 0.694402, y: 0.69667464, z: 1}
+  m_LocalPosition: {x: -2.1491, y: -0.0036, z: 0}
+  m_LocalScale: {x: 0.55529374, y: 0.55711114, z: 0.7996719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2060151609}
@@ -776,7 +776,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6937817954938267909, guid: a15387c2f88b64ae3a4ae1be16bf3067, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -814,8 +814,8 @@ Transform:
   m_GameObject: {fileID: 1185503456}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.94, y: -0.02, z: 0}
-  m_LocalScale: {x: 0.6849, y: 0.6994, z: 1}
+  m_LocalPosition: {x: -6.3535, y: -0.0137, z: 0}
+  m_LocalScale: {x: 0.5476953, y: 0.5592905, z: 0.7996719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2060151609}
@@ -1193,7 +1193,7 @@ Transform:
   m_GameObject: {fileID: 1524942225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0529, y: -0.0416, z: 0}
+  m_LocalPosition: {x: -0.03, y: -0.09, z: 0}
   m_LocalScale: {x: 2.03892, y: 1.9520916, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1231,9 +1231,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 338196440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -111, y: 1061}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -643, y: -146}
   m_SizeDelta: {x: 497.2417, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1719147209
@@ -1283,8 +1283,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -366.96692, w: 0}
+  m_margin: {x: 0, y: 0, z: -1287.2787, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1361,8 +1361,8 @@ Transform:
   m_GameObject: {fileID: 1760307036}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6586, y: 0.0007, z: 0}
-  m_LocalScale: {x: 0.69780475, y: 0.693854, z: 1}
+  m_LocalPosition: {x: 2.1211, y: 0.0029, z: 0}
+  m_LocalScale: {x: 0.55801487, y: 0.5548555, z: 0.7996719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2060151609}
